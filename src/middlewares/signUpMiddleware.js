@@ -24,7 +24,7 @@ export async function validatingSignUp (req, res, next) {
         const emailAlreadyExist = await db.collection("users").findOne({email});
 
         if (emailAlreadyExist) {
-            return res.sendStatus(409);
+            return res.status(409).send("This email already exists");
         }
         next();
 
