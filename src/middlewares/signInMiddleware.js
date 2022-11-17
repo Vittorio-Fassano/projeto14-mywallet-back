@@ -23,8 +23,8 @@ export async function validatingSignIn (req, res, next) {
         const user =  await db.collection("users").findOne({email});
         const validatingPassword = user && bcrypt.compareSync(password, user.password);
 
-        if (user === null || !validatingPassword) {return res.status(422).send("incorrect data");}
-        //user=null is an unregistered email
+        if (user === null) {return res.status(422).send("wrong user or not registered");}
+        if (!validatingPassword) {return res.status(422).send("incorrect password");}
 
         res.locals.user = user; 
         //pass data between middlewares, in this case store the valitaded user data to use in the signIn function*/
