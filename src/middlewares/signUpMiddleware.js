@@ -22,10 +22,11 @@ export async function validatingSignUp (req, res, next) {
 
     try {
         const emailAlreadyExist = await db.collection("users").findOne({email});
+        const userAlreadyExist = await db.collection("users").findOne({name});
 
-        if (emailAlreadyExist) {
-            return res.status(409).send("This email already exists");
-        }
+        if (emailAlreadyExist) { return res.status(409).send("This email already exists");}
+        if (userAlreadyExist) { return res.status(409).send("This username already exists");}
+
         next(); //validation confirmed, can move to the next function, in this case it is the signUp control function
 
     } catch (err) {
