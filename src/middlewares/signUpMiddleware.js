@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-import {usersCollection} from "../../database.js";
+import {usersCollection} from "../database/db.js";
 
 export async function validatingSignUp (req, res, next) {
     const { name, email, password, confirmedPassword } = req.body;

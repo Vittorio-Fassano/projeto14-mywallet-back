@@ -1,6 +1,6 @@
 import {v4 as uuid} from 'uuid';
 
-import {sessionsCollection} from "../../database.js";
+import {sessionsCollection} from "../database/db.js";
 
 export async function signIn(req, res) { /*every time you login, a new token is created, 
                                            consequently, a new session is created*/

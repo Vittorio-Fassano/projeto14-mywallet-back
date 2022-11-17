@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
 
-import {usersCollection} from "../../database.js";
+import {usersCollection} from "../database/db.js";
 
 export async function validatingSignIn (req, res, next) {
     const { email, password} = req.body;
