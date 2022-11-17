@@ -3,7 +3,8 @@ import chalk from 'chalk';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import authRouter from './routes/authRouter.js';
+import signUpRouter from './routes/signUpRouter.js';
+import signInRouter from './routes/signInRouter.js';
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.use(express.json());
 
 dotenv.config();
 
-app.use(authRouter);
+app.use(signUpRouter);
+app.use(signInRouter);
 
 const port = process.env.PORT;
 app.listen(port, () => {
