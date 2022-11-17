@@ -23,4 +23,6 @@ try {
     console.log(chalk.bold.red("Error connecting with database", err));
 }
 
-export default db
+//collections
+export const sessionsCollection = db.collection("sessions");
+export const usersCollection = db.collection("users");

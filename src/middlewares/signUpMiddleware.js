@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-import db from "../../database.js";
+import {usersCollection} from "../../database.js";
 
 export async function validatingSignUp (req, res, next) {
     const { name, email, password, confirmedPassword } = req.body;
@@ -21,8 +21,8 @@ export async function validatingSignUp (req, res, next) {
     }
 
     try {
-        const emailAlreadyExist = await db.collection("users").findOne({email});
-        const userAlreadyExist = await db.collection("users").findOne({name});
+        const emailAlreadyExist = await usersCollection.findOne({email});
+        const userAlreadyExist = await usersCollection.findOne({name});
 
         if (emailAlreadyExist) { return res.status(409).send("This email already exists");}
         if (userAlreadyExist) { return res.status(409).send("This username already exists");}

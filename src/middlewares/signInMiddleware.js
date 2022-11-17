@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
 
-import db from "../../database.js";
+import {usersCollection} from "../../database.js";
 
 export async function validatingSignIn (req, res, next) {
     const { email, password} = req.body;
@@ -20,7 +20,7 @@ export async function validatingSignIn (req, res, next) {
     }
 
     try {
-        const user =  await db.collection("users").findOne({email});
+        const user =  await usersCollection.findOne({email});
         const validatingPassword = user && bcrypt.compareSync(password, user.password);
 
         if (user === null) {return res.status(422).send("wrong user or not registered");}
