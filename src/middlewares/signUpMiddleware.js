@@ -26,7 +26,7 @@ export async function validatingSignUp (req, res, next) {
         if (emailAlreadyExist) {
             return res.status(409).send("This email already exists");
         }
-        next();
+        next(); //validation confirmed, can move to the next function, in this case it is the signUp control function
 
     } catch (err) {
         console.log(err)

@@ -1,23 +1,17 @@
-import bcrypt from 'bcrypt';
 import {v4 as uuid} from 'uuid';
 
 import db from "../../database.js";
 
-export async function signIn(req, res) {
-    const { email, password } = req.body;
-
+export async function signIn(req, res) { /*every time you login, a new token is created, 
+                                           consequently, a new session is created*/
     try {
-        const user = await db.collection('users').findOne({ email });
+        const token = uuid();
+        const {user} = res.locals; //get validated user data
 
-        if(user && bcrypt.compareSync(password, user.password)) {
-            const token = uuid();
-            await db.collection("sessions").insertOne({userId: user._id, token});
-            res.status(200).send({name: user.name, token});
-        } else (
-            res.sendStatus(500)
-        )
+        await db.collection("sessions").insertOne({userId: user._id, token});
+        res.status(200).send({name: user.name, token}); //sends the validated data to be used in the front-end
 
     } catch (err) {
-        return res.status(500).send(err);
-    }
+            return res.status(500).send(err);
+        }
 }
