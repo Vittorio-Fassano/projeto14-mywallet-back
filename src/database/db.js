@@ -24,5 +24,6 @@ try {
 }
 
 //collections
-export const sessionsCollection = db.collection("sessions");
 export const usersCollection = db.collection("users");
+export const sessionsCollection = db.collection("sessions");
+export const transactionsCollection = db.collection("transactions");
