@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 import {transactionsCollection} from "../database/db.js";
 
-export async function newTransaction     (req, res) {
+export async function newTransaction (req, res) {
     const {value, description, type} = req.body 
 
     const {user} = res.locals;

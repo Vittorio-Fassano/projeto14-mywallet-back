@@ -4,8 +4,9 @@ export async function transactions(req, res) {
     const { user } = res.locals;
 
     try {
-        const transactions = await transactionsCollection.find({ user: user.name }).toArray();
-        res.status(200).send(transactions);
+        const transaction = await transactionsCollection.find({ user: user.name }).toArray();
+
+        res.status(200).send(transaction);
 
     } catch (error) {
         console.log(error);
