@@ -23,6 +23,7 @@ export async function validatingSignIn (req, res, next) {
         if (!validatingPassword) {return res.status(422).send("incorrect password");}
 
         res.locals.user = user; 
+        console.log(user);
         //pass data between middlewares, in this case store the valitaded user data to use in the signIn function*/
 
         next(); //validation confirmed, can move to the next function, in this case it's the signIn control function

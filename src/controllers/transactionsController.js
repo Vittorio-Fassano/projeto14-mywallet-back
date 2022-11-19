@@ -1,9 +1,15 @@
-import dayjs from "dayjs";
-
 import {transactionsCollection} from "../database/db.js";
 
-async function newTransaction (req, res) {
-  
-}
+export async function transactions(req, res) {
+    const { user } = res.locals;
 
-//under construction
+    try {
+        const transactions = await transactionsCollection.find({ user: user.name }).toArray();
+        res.status(200).send(transactions);
+
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+        return;
+    }
+}

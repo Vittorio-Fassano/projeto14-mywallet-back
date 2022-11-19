@@ -26,7 +26,7 @@ export async function validatingToken (req, res, next) {
 
         res.locals.user = user;
         //this is a local response, we don't send it to the client, we just store it to pass on to the next middleware
-
+        
         next(); //move to the next function, in this case it's the validatingNewTransaction middleware function
 
       } catch (err) {
