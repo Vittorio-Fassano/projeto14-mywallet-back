@@ -1,15 +1,11 @@
-import Joi from 'joi';
 import bcrypt from 'bcrypt';
 
 import {usersCollection} from "../database/db.js";
+import {signInSchema} from "../models/signInSchema.js";
+
 
 export async function validatingSignIn (req, res, next) {
     const { email, password} = req.body;
-
-    const signInSchema = Joi.object({
-        email: Joi.string().required().email(),
-        password: Joi.string().required(),
-    });
 
     const { error } = signInSchema.validate(req.body, { abortEarly: false }); 
 

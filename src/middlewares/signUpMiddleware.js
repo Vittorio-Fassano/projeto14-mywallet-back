@@ -1,16 +1,10 @@
 import Joi from 'joi';
 
 import {usersCollection} from "../database/db.js";
+import {signUpSchema} from "../models/signUpSchema.js";
 
 export async function validatingSignUp (req, res, next) {
     const { name, email, password, confirmedPassword } = req.body;
-
-    const signUpSchema = Joi.object({
-        name: Joi.string().required().min(3),
-        email: Joi.string().required().email(),
-        password: Joi.string().required(),
-        confirmedPassword: Joi.ref('password'),
-    });
 
     const { error } = signUpSchema.validate(req.body, { abortEarly: false });  
 
