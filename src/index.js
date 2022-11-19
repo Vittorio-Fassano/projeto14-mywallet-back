@@ -24,3 +24,5 @@ const port = process.env.PORT;
 app.listen(port, () => {
     console.log(chalk.bold.green(`Server running in port: ${port}`))
 });
+
+//FINAL VERSION 1.0 of the "API mYWallet"
