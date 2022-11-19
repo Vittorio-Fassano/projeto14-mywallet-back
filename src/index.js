@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import signUpRouter from './routes/signUpRouter.js';
 import signInRouter from './routes/signInRouter.js';
 import transactionsRouter from './routes/transactionsRouter.js';
+import signOutRouter from './routes/signOutRouter.js';
 
 const app = express();
 
@@ -17,6 +18,7 @@ dotenv.config();
 app.use(signUpRouter);
 app.use(signInRouter);
 app.use(transactionsRouter);
+app.use(signOutRouter);
 
 const port = process.env.PORT;
 app.listen(port, () => {
