@@ -13,7 +13,7 @@ try {
     console.log(chalk.bold.red("Error connecting with mongoDb", err));
 }
 
-const database = process.env.MONGO_DB;
+const database = "myWallet-database";
 let db = null;
 
 try {

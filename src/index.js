@@ -25,4 +25,4 @@ app.listen(port, () => {
     console.log(chalk.bold.green(`Server running in port: ${port}`))
 });
 
-//FINAL VERSION 1.0 of the "API mYWallet"
+//FINAL VERSION 1.3 of the "API mYWallet"
